@@ -1,7 +1,12 @@
 # Collaboration_Tom_Beneke LeishiGuideRanking Function
+## Author
+Elisabeth Meiser
 
 ## Description
 The `LeishiGuideRanking` function is designed to process TOMS CSV files and perform data ranking based on specified criteria. It can be used to load TOMS CSV data, calculate various scoring parameters, and rank the data. The ranked data can be saved as a CSV file for further analysis.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Features
 - Loads TOMS CSV data files into a MATLAB table.
