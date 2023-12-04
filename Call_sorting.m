@@ -1,22 +1,69 @@
-% Specify the folder path
-folderPath = '/Volumes/E_Meiser/LeishBASE';
-
-% Other parameters for LeishiGuideRanking
-path_in = '/Volumes/E_Meiser/LeishBASE';
-path_out = '/Volumes/E_Meiser/LeishBASE/Sorting120423';
-rankByGeneID = false ;
-
-% List all files in the folder
-files = dir(fullfile(folderPath, '*LeishBASEedit_v1_output.primer.txt')); % Replace 'your_file_extension' with the actual file extension
-
-% Iterate over each file
-for i = 1:length(files)
-    % Get the current filename
-    filename = files(i).name;
-    
-    % Construct the full path to the file
-    fullPath = fullfile(folderPath, filename);
-    
-    % Call your LeishiGuideRanking function for each file
-    LeishiGuideRanking(path_in, path_out, fullPath, rankByGeneID);
-end
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/Sorting120423', 'TriTrypDB-59_AdeanaiCavalhoATCCPRA-265_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_AdeanaiCavalhoATCCPRA-265_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_BayalaiB08-376_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_BsaltansLakeKonstanz_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_CfasciculataCfCl_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_EmonterogeiiLV88_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LaethiopicaL147_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LamazonensisMHOMBR71973M2269_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LarabicaLEM1108_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LbraziliensisMHOMBR75M2903_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LbraziliensisMHOMBR75M2904_2019_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LbraziliensisMHOMBR75M2904_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LdonovaniBPK282A1_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LdonovaniCL-SL_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LdonovaniHU3_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LdonovaniLV9_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LenriettiMCAVBR2001CUR178_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LenriettiiLEM3045_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LenriettiiLEM3045_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LgerbilliLEM452_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LinfantumJPCM5_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LmajorFriedlin2021_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LmajorFriedlin2021_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LmajorFriedlin_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LmajorLV39c5_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LmajorSD75.1_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LmartiniquensisLEM2494_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LmartiniquensisMHOMTH2012LSCM1_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LmartiniquensisMHOMTH2012LSCM1_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LmexicanaMHOMGT2001U1103_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LorientalisMHOMTH2014LSCM4_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LpanamensisMHOMCOL81L13_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LpanamensisMHOMCOL81L13_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LpanamensisMHOMPA94PSC1_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LpyrrhocorisH10_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LseymouriATCC30220_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_Lsp.GhanaMHOMGH2012GH5_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_Lsp.NamibiaMPRONA1975252LV425_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LtarentolaeParrotTarII2019_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LtarentolaeParrotTarII_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LtropicaL590_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_LturanicaLEM423_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_PconfusumCUL13_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_PhertigiMCOEPA1965C119_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TbruceiEATRO1125_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TbruceiLister427_2018_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TbruceiLister427_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TbruceiTREU927_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TbruceigambienseDAL972_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcongolenseIL3000_2019_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcongolenseIL3000_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziBrazilA4_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziCLBrenerEsmeraldo-like_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziCLBrenerNon-Esmeraldo-like_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziCLBrener_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziCL_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziDm28c2014_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziDm28c2018_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziG_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziSylvioX10-1-2012_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziSylvioX10-1_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruziYC6_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TcruzimarinkelleiB7_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TequiperdumOVI_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TevansiSTIB805_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TgrayiANR4_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TrangeliSC58_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TtheileriEdinburgh_Genome_LeishBASEedit_v1_output.primer.txt', false);
+LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE', '/Users/eli/Desktop/TOM_Leish_Guide/LeishBASE/Sorting120423', 'TriTrypDB-59_TvivaxY486_Genome_LeishBASEedit_v1_output.primer.txt', false);
