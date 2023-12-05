@@ -25,7 +25,11 @@
 
 function LeishiGuideRanking(path_in, path_out, filename, rankByGeneID)
 
-ResultFolder = fullfile(path_out, filename);
+% Get the current date in the format 'yymmdd'
+currentDate = datestr(now, 'yymmdd');
+
+% Create the ResultFolder using the current date
+ResultFolder = fullfile(path_out, currentDate);
 
 % Create the directory if it doesn't exist
 if ~exist(ResultFolder, 'dir')
