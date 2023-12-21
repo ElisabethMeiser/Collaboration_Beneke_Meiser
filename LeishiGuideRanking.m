@@ -5,8 +5,6 @@
 %
 % Usage:
 %   LeishiGuideRanking(path_in, path_out, filename, rankByGeneID)
-%   LeishiGuideRanking('/Users/eli/Desktop/TOM_Leish_Guide/', '/Users/eli/Desktop/TOM_Leish_Guide/TestSorting', 'TriTrypDB-59_LmexicanaMHOMGT2001U1103_Genome_LeishBASEedit_v1_output.primer.txt', true)
-
 %
 % Input:
 %   - path_in: The path to the folder containing TOMS CSV data files.
@@ -20,12 +18,17 @@
 %   - The final sorted data table is saved as a .csv file in 'ResultFolder'
 %     under the given 'filename'.
 %
-% Created by Elisabeth Meiser on 23rd September 2013.
+% Created by Elisabeth Meiser on 23rd September 2023.
 %
 
 function LeishiGuideRanking(path_in, path_out, filename, rankByGeneID)
 
-ResultFolder = fullfile(path_out, 'GuideIDTable');
+% Get the current date in the format 'yymmdd'
+currentDate = datestr(now, 'yymmdd');
+
+% Create the ResultFolder using the current date
+ResultFolder = fullfile(path_out, currentDate);
+%ResultFolder = fullfile(path_out, '120523');
 
 % Create the directory if it doesn't exist
 if ~exist(ResultFolder, 'dir')
@@ -36,6 +39,7 @@ end
 %% Step 1: Data Loading from a CSV file into a MATLAB table
 GuideID = readtable(fullfile(path_in, filename),'PreserveVariableNames',true);
 
+
 %% Step 2: Data Ranking with grouping by GeneID
 
 % Initialize new columns to store results
@@ -45,9 +49,9 @@ GuideID.RelativeProbability = zeros(size(GuideID.GuideSeq));
 GuideID.C4to8Score = zeros(size(GuideID.GuideSeq));
 
 
-% Step 1: Calculate NumCytosine in the 'Target' column using a 
-% vectorized approach and 
-% Step 2: determine the number of possible stop codons in the 
+% Step 1: Calculate NumCytosine in the 'Target' column using a
+% vectorized approach and
+% Step 2: determine the number of possible stop codons in the
 % 'GuideCoordinates' column.
 
 for i = 1:numel(GuideID.GuideTarget)
@@ -68,12 +72,41 @@ end
 % Step 3: Calculate the relative probability to generate a stop codon from any C.
 GuideID.RelativeProbability = GuideID.NumPossibleStopCodons ./ GuideID.NumCytosine;
 
-% Step 4: Check if 'C' is located in positions 4 to 8 also override toms
-% column, which was not working
+% % Step 4: Check if 'C' is located in positions 4 to 8 also override toms
+% % column, which was not working
+% for i = 1:size(GuideID, 1)
+%     c_position = strfind(GuideID.GuideSeq{i}, 'C');
+%     if ~isempty(c_position) && any(c_position >= 4 & c_position <= 8)
+%         GuideID.C4to8Score(i) = 1;
+%     end
+% end
 for i = 1:size(GuideID, 1)
-    c_position = strfind(GuideID.GuideSeq{i}, 'C');
-    if ~isempty(c_position) && any(c_position >= 4 & c_position <= 8)
+
+    inputStringTarget = GuideID.GuideTarget{i};
+    pattern = '\{(.*?)\}';
+    matches = regexp(inputStringTarget, pattern, 'tokens');
+    textWithinBrackets = [matches{:}];
+
+    % Substitute all occurrences of (C->T) with X as well as clean up the
+    % string
+    modifiedGuideSeq = strrep(textWithinBrackets, '(C->T)', 'X');
+    modifiedGuideSeq = strrep(modifiedGuideSeq, ',', '');
+    modifiedGuideSeq = strrep(modifiedGuideSeq, '[', '');
+    modifiedGuideSeq = strrep(modifiedGuideSeq, ']', '');
+
+    modifiedGuideSeq = string(modifiedGuideSeq);
+    x_position = strfind(modifiedGuideSeq, 'X');
+
+    % Check if X is located in positions 4 to 8
+
+    if ~isempty(x_position) && any(x_position >= 4 & x_position <= 8)
         GuideID.C4to8Score(i) = 1;
+    end
+
+    % Check if X is located in positions 4 to 10
+
+    if ~isempty(x_position) && any(x_position >= 4 & x_position <= 10)
+        GuideID.C4to10Score(i) = 1;
     end
 end
 
@@ -87,16 +120,7 @@ else
     GuideID.EditWindow4to8 = GuideID.C4to8Score;
 end
 
-% Step 4_b: Check if 'C' is located in positions 4 to 10 also override toms
-% column, which was not working
-for i = 1:size(GuideID, 1)
-    c_position = strfind(GuideID.GuideSeq{i}, 'C');
-    if ~isempty(c_position) && any(c_position >= 4 & c_position <= 10)
-        GuideID.C4to10Score(i) = 1;
-    end
-end
-
-%Rename Toms Varible, because the nomenclature is trouble
+%Rename Toms Varible, because the nomenclature is trouble EditWindow_4-10
 if ismember('EditWindow4to10', GuideID.Properties.VariableNames)
     % Column 'EditWindow4to10' already exists, no need to rename it
     GuideID.EditWindow4to10 = GuideID.C4to10Score;
@@ -106,6 +130,19 @@ else
     GuideID.EditWindow4to10 = GuideID.C4to10Score;
 end
 
+
+%Rename Toms Varible, because the nomenclature is trouble #AdditionalStops
+if ismember('AdditionalStops', GuideID.Properties.VariableNames)
+    % Column 'AdditionalStops' already exists, no need to rename it
+
+else
+    % Rename '#AdditionalStops' to 'AdditionalStops' if it doesn't exist
+    GuideID = renamevars(GuideID, '#AdditionalStops', 'AdditionalStops');
+
+end
+
+
+
 %% Calculate the final scores for all sequences in the table
 scores = ((GuideID.RelativeProbability * 4) + GuideID.C4to8Score + GuideID.("TargetWithinFirst_20%_of_CDS")+ GuideID.("TargetWithinFirst_40%_of_CDS"));
 
@@ -113,10 +150,12 @@ scores = ((GuideID.RelativeProbability * 4) + GuideID.C4to8Score + GuideID.("Tar
 normalized_scores = scores*100/7; %num of contributions
 
 % Add the normalized_scores as a new column 'C_Scores' to the table
-GuideID.C_Scores = 100-normalized_scores; % 0 is the best guide, 100 is 
+GuideID.C_Scores = 100-normalized_scores; % 0 is the best guide, 100 is
 % the worst guide, counter intuitive, but this way Tom can
 % sort the identidiers in a acending way...
 
+%%recalculate the TotalScore
+GuideID.TotalScore = (GuideID.AdditionalStops +  GuideID.EditWindow4to8 +  GuideID.EditWindow4to10 + GuideID.("TargetWithinFirst_20%_of_CDS")+ GuideID.("TargetWithinFirst_40%_of_CDS"));
 
 %% Create a Guide ID called 'NewIdentifier' that contains all important
 % scoring parmeters.
@@ -135,11 +174,18 @@ for i = 1:size(GuideID, 1)
     strand = GuideID.Strand{i};
 
     % Extract 'C_Scores' value for the current row
-    cScore = GuideID.C_Scores_round(i);
+    cScore = num2str(GuideID.C_Scores_round(i));
 
     % Extract guide coordinates
     guideCoordinatesValue = GuideID.GuideCoordinates{i};
-    
+
+    % Extract guide TotalScore
+    TotalScoreValue = GuideID.TotalScore(i);
+    TotalScoreValue = 99-TotalScoreValue;
+    TotalScoreValue = num2str(TotalScoreValue);
+
+    % Extract guide position
+    PositionValue = num2str(GuideID.Position(i));
 
     % Determine the strand part of the 'NewIdentifier'
     strandPart = '';
@@ -151,11 +197,18 @@ for i = 1:size(GuideID, 1)
 
     % Create the 'NewIdentifier' by concatenating the parts
     NewIdentifier{i} = [geneID '_'  num2str(cScore) '_' guideCoordinatesValue '_' strandPart];
+
+    % Create the up to date 'GuideID' by concatenating the parts
+    GuideID_new{i} = [geneID '_' strandPart '_' TotalScoreValue '_' PositionValue '_' guideCoordinatesValue ];
+
+
 end
 
 % Add the 'NewIdentifier' to the 'GuideID' table
 GuideID.NewIdentifier = NewIdentifier;
 
+% Update the Guide ID name
+GuideID.GuideID = GuideID_new';
 
 if rankByGeneID
 
@@ -176,26 +229,20 @@ if rankByGeneID
     end
 
 
+    % Define the CSV file name (you can use strrep to replace the file extension)
+    csvFileName = fullfile(ResultFolder, strrep(filename, '.csv', '_sorted.csv'));
 
-    %else
-    % Step 2: Data Ranking without grouping
-    %     sortedGuideID = customRankingFunction(GuideID);
-    % Save the sortedGuideID as a CSV file
-
-% Define the CSV file name (you can use strrep to replace the file extension)
-csvFileName = fullfile(ResultFolder, strrep(filename, '.csv', '_sorted.csv'));
-
-% Write the table to the CSV file
-writetable(sortedGuideID, csvFileName);
+    % Write the table to the CSV file
+    writetable(sortedGuideID, csvFileName);
 
 else
 
-% Save the GuideID as a CSV file
-% Define the CSV file name (you can use strrep to replace the file extension)
-csvFileName = fullfile(ResultFolder, strrep(filename, '.csv', '_unsort.csv'));
+    % Save the GuideID as a CSV file
+    % Define the CSV file name (you can use strrep to replace the file extension)
+    csvFileName = fullfile(ResultFolder, strrep(filename, '.csv', '_unsort.csv'));
 
-% Write the table to the CSV file
-writetable(GuideID, csvFileName);
+    % Write the table to the CSV file
+    writetable(GuideID, csvFileName);
 
 end
 
