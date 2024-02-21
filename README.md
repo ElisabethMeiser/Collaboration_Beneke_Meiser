@@ -3,13 +3,15 @@
 Elisabeth Meiser
 
 ## Description
-The `LeishiGuideRanking` function is designed to process TOMS CSV files and perform data ranking based on specified criteria. It can be used to load TOMS CSV data, calculate various scoring parameters, and rank the data. The ranked data can be saved as a CSV file for further analysis.
+The `LeishiGuideRanking` function is designed to process CSV files and perform data ranking based on specified criteria. It can be used to load CSV data, calculate various scoring parameters, and rank the data. The ranked data can be saved as a CSV file for further analysis.
+
+It was written to sort and rank Guide DNA for the following publication: 
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Features
-- Loads TOMS CSV data files into a MATLAB table.
+- Loads CSV data files into a MATLAB table.
 - Calculates various scoring parameters for the data.
 - Ranks the data based on the calculated scores.
 - Allows ranking by GeneID if desired.
